@@ -1,0 +1,6 @@
+version: '2'
+services:
+  web:
+    image: amazon/amazon-ecs-sample
+    ports:
+     - "80:80"
