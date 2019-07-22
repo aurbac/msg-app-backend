@@ -34,16 +34,23 @@ git clone https://github.com/aurbac/msg-app-backend.git
 cd msg-app-backend/
 ```
 
+Install JQ command.
+
+``` bash
+sudo yum install jq
+```
+
 ## Create an Amazon VPC with AWS CloudFormation
 
 Create a simple DynamoDB table to store the messages for our application, by executing the following command the table is created using AWS CloudFormation.
 
 ``` bash
-aws cloudformation create-stack --stack-name MsgApp --template-body file://msg-app-dynamodb.json --parameters ParameterKey=BillOnDemand,ParameterValue=true ParameterKey=ReadCapacityUnits,ParameterValue=5 ParameterKey=WriteCapacityUnits,ParameterValue=10
+aws cloudformation create-stack --stack-name MsgApp --template-body file://db/msg-app-dynamodb.json --parameters ParameterKey=BillOnDemand,ParameterValue=true ParameterKey=ReadCapacityUnits,ParameterValue=5 ParameterKey=WriteCapacityUnits,ParameterValue=10
 ```
 
 ``` bash
-aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[0].OutputValue'
+MY_TABLE_NAME=`aws cloudformation describe-stacks --stack-name MsgApp | jq '.Stacks[0].Outputs[0].OutputValue' | tr -d \"`
+echo $MY_TABLE_NAME
 ```
 
 ``` bash

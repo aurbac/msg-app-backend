@@ -1,5 +1,7 @@
 import boto3
+import os
 
+MY_TABLE_NAME=os.environ['MY_TABLE_NAME']
 dynamodb = boto3.resource('dynamodb')
 
 table = dynamodb.Table('MsgApp-MessagesTable')
