@@ -1,10 +1,10 @@
 import boto3
 import os
 
-MY_TABLE_NAME=os.environ['MY_TABLE_NAME']
 dynamodb = boto3.resource('dynamodb')
 
-table = dynamodb.Table('MsgApp-MessagesTable')
+my_table_name = os.environ['MY_TABLE_NAME']
+table = dynamodb.Table(my_table_name)
 
 with table.batch_writer() as batch:
     batch.put_item(
@@ -55,5 +55,4 @@ with table.batch_writer() as batch:
             'active': True,
         }
     )
-
 
