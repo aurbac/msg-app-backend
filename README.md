@@ -54,7 +54,7 @@ echo $MY_TABLE_NAME
 ```
 
 ``` bash
-python batch_writing.py
+python db/batch_writing.py
 ```
 
 ## Create an Amazon VPC with AWS CloudFormation
@@ -121,7 +121,7 @@ docker build -t my-api .
 ecs-cli push my-api --cluster-config myCluster
 ```
 
-# Create Security Group for my ECS Service
+## Create Security Group for my ECS Service
 
 ``` bash
 export SG_SERVICE_API=`aws ec2 create-security-group --group-name "service-api" --description "My security group for API" --vpc-id $VPC_ID | jq '.GroupId' | tr -d \"`
