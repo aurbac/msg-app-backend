@@ -1,6 +1,15 @@
-version: '2'
+version: '3'
 services:
-  web:
-    image: amazon/amazon-ecs-sample
+  api:
+    environment:
+      - DYNAMODB_MESSAGES_TABLE=<MY_TABLE_NAME>
+      - APP_ID=my-app
+    image: <IMAGE_URI>
     ports:
-     - "80:80"
+      - "3000:3000"
+    logging:
+      driver: awslogs
+      options: 
+        awslogs-group: my-api
+        awslogs-region: us-east-1
+        awslogs-stream-prefix: messages
