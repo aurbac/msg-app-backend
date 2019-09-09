@@ -1,5 +1,62 @@
 {
     "Description": "Create an Amazon VPC with two public and two private subnets - By Uriel Ramirez",
+    "Outputs": {
+        "PrivateSubnetId01": {
+            "Description": "PrivateSubnetId01",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-private-subnet-id-01"
+                }
+            },
+            "Value": {
+                "Ref": "PrivateSubnet01"
+            }
+        },
+        "PrivateSubnetId02": {
+            "Description": "PrivateSubnetId02",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-private-subnet-id-02"
+                }
+            },
+            "Value": {
+                "Ref": "PrivateSubnet02"
+            }
+        },
+        "PublicSubnetId01": {
+            "Description": "PublicSubnetId01",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-public-subnet-id-01"
+                }
+            },
+            "Value": {
+                "Ref": "PublicSubnet01"
+            }
+        },
+        "PublicSubnetId02": {
+            "Description": "PublicSubnetId02",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-public-subnet-id-02"
+                }
+            },
+            "Value": {
+                "Ref": "PublicSubnet02"
+            }
+        },
+        "VpcId": {
+            "Description": "VpcId",
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-vpc-id"
+                }
+            },
+            "Value": {
+                "Ref": "Vpc"
+            }
+        }
+    },
     "Parameters": {
         "VpcCidrBlock": {
             "AllowedPattern": "((\\d{1,3})\\.){3}\\d{1,3}/\\d{1,2}",
