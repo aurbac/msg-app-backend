@@ -2,7 +2,6 @@ var express = require('express')
 var cors = require('cors')
 var bodyParser = require('body-parser')
 var AWS = require('aws-sdk');
-AWS.config.update({region: 'us-east-1'});
 
 var app = express()
 
@@ -11,6 +10,8 @@ var app = express()
 var AWS_DEFAULT_REGION = process.env.AWS_DEFAULT_REGION
 var DYNAMODB_MESSAGES_TABLE = process.env.DYNAMODB_MESSAGES_TABLE
 var APP_ID = process.env.APP_ID
+
+AWS.config.update({region: AWS_DEFAULT_REGION});
 
 app.use(cors())
 app.use(bodyParser.json())
