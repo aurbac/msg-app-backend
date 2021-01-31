@@ -1,6 +1,7 @@
-FROM node:8.14.0-jessie-slim
+FROM public.ecr.aws/bitnami/node:latest
 ENV PORT=3000
 EXPOSE $PORT
-COPY . /
+COPY . /app
+WORKDIR /app
 RUN npm install
-CMD ["node", "/server.js"]
+CMD ["node", "server.js"]
