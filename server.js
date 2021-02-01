@@ -5,8 +5,6 @@ var AWS = require('aws-sdk');
 
 var app = express()
 
-//console.log(process.env)
-
 var AWS_DEFAULT_REGION = process.env.AWS_DEFAULT_REGION
 var DYNAMODB_MESSAGES_TABLE = process.env.DYNAMODB_MESSAGES_TABLE
 var APP_ID = process.env.APP_ID
@@ -65,7 +63,7 @@ app.get('/api/messages/:token?', (req,res) => {
         };
         
         data.Items.forEach(function(element, index, array) {
-          messages.messages.push({ "created_at" : element.created_at.N , "message" : element.message.S });
+          messages.messages.push({ "created_at" : Date(element.created_at.N*1000) , "message" : element.message.S });
         });
 
         res.status(200).send(messages);
